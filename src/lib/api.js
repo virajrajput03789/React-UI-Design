@@ -1,7 +1,9 @@
 import axios from 'axios'
-const api = axios.create({
-  baseURL: import.meta.env.DEV ? 'http://localhost:4000' : '/api',
-})
+const base =
+  import.meta.env.DEV
+    ? (import.meta.env.VITE_API_URL || 'http://localhost:4000')
+    : (import.meta.env.VITE_API_URL || '/api')
+const api = axios.create({ baseURL: base })
 
 export async function fetchTickets() {
   const res = await api.get('/tickets')

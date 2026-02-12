@@ -16,10 +16,12 @@ function Tickets() {
   const [tickets, setTickets] = useState(initial)
   const [tab, setTab] = useState('all')
   const { search } = useUI()
+  const [loading, setLoading] = useState(false)
 
   useEffect(() => {
     ;(async () => {
       try {
+        setLoading(true)
         const data = await fetchTickets()
         if (Array.isArray(data)) {
           const seen = new Set()
@@ -34,6 +36,8 @@ function Tickets() {
         }
       } catch {
         // fallback to local initial
+      } finally {
+        setLoading(false)
       }
     })()
   }, [])
@@ -77,6 +81,9 @@ function Tickets() {
 
   return (
     <div className="space-y-6">
+      {loading && (
+        <div className="text-sm text-text-muted">Loading tickets…</div>
+      )}
       <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
         <StatCard label="Tickets Capacity" value={42} sublabel="active" trend={6} />
         <StatCard label="Open Tickets" value={18} trend={-2} />
