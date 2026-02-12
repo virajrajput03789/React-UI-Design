@@ -1,0 +1,28 @@
+@import "tailwindcss";
+
+@theme {
+  --color-bg: #F8FAFC;
+  --color-primary-50: #EEF1FF;
+  --color-primary-100: #DBE0FF;
+  --color-primary-200: #B7C0FF;
+  --color-primary-600: #4A58CC;
+  --color-primary-700: #3A4599;
+  --color-sidebar: #0F172A;
+  --color-text: #0F172A;
+  --color-text-muted: #64748B;
+  --color-border: #E5E7EB;
+  --color-success: #22C55E;
+  --color-warning: #F59E0B;
+  --color-danger: #EF4444;
+  --color-info: #3B82F6;
+}
+
+@utility shadow-card {
+  box-shadow: 0 8px 24px rgba(15, 23, 42, 0.06);
+}
+
+@layer base {
+  html, body, #root {
+    height: 100%;
+  }
+}
